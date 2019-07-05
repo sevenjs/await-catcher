@@ -2,7 +2,7 @@
  * The argument passed into the awaitCatcher
  */
 type PromiseArg<T> = T | Promise<T> | ReturnType<()=> ()=> Promise<T>>;
-
+console.log('TEST TRAVIS');
 /**
  * The promise returned from awaitCatcher contianing an array of [data | undefined, error | undefined]
  */
