@@ -15,7 +15,6 @@ type PromiseReturn<T> = Promise<[T | undefined, Error | undefined]>;
  *                3) an object that contains either a promise or a function that returns a promise
  */  
 export const awaitCatcher = <T>(promise: PromiseArg<T>): PromiseReturn<T> => {
-
     /**
      * Types
      */
@@ -46,7 +45,7 @@ export const awaitCatcher = <T>(promise: PromiseArg<T>): PromiseReturn<T> => {
      *  1) is not a Promise
      *  2) is an object that does NOT include either a Promise nor a Function in the first Object Key!! 
      */
-    if ((!promise && !(promise instanceof Promise))
+    if (!(promise instanceof Promise)
         && promise instanceof Object
         && Object.keys(promise).length > 0 
         && !(promise[Object.keys(promise)[0]] instanceof Promise)
@@ -95,8 +94,9 @@ export const awaitCatcher = <T>(promise: PromiseArg<T>): PromiseReturn<T> => {
     /**
      * if getPromise is still undefined --> return error
      */
-    if (settings.getPromise === undefined)
-        return settings.error;
+    // UNREACHABLE CODE BELOW:
+    // if (settings.getPromise === undefined)
+    //     return settings.error;
 
     /**
      * Magic happens here
